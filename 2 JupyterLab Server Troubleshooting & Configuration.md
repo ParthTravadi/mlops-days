@@ -32,3 +32,34 @@ c.ServerApp.ip = '0.0.0.0'
 c.ServerApp.port = 8888
 c.ServerApp.root_dir = '/root/notebooks/'
 c.ServerApp.open_browser = False
+
+Step 2: Prepare the Environment
+Ensure the target notebook directory exists on disk and that the required notebook package is installed to prevent the ExtensionModuleNotFound error:
+
+Bash
+# Create the notebook directory
+mkdir -p /root/notebooks
+
+# Activate environment and install the missing notebook package
+source /root/code/ml-env/bin/activate
+pip install notebook
+Step 3: Start the JupyterLab Server
+Run the server using the virtual environment binary, the configuration file, and the required flag to allow execution as the root user:
+
+Bash
+/root/code/ml-env/bin/jupyter lab --config /root/code/jupyter_lab_config.py --allow-root
+4. Active Recall Review
+Test yourself: Read the prompt, write down the exact fix or command from memory, then verify against the answers below.
+
+Python
+c.ServerApp.ip = '0.0.0.0'
+c.ServerApp.port = 8888
+Bash
+pip install notebook
+Command: mkdir -p /root/notebooks
+Config: c.ServerApp.root_dir = '/root/notebooks/'
+
+Append the --allow-root flag to the startup command:
+
+Bash
+/root/code/ml-env/bin/jupyter lab --config /root/code/jupyter_lab_config.py --allow-root
