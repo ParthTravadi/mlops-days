@@ -1,2 +1,2 @@
 # mlops-days
-Practice and notes
+Practice and notes.
