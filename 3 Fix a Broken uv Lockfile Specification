@@ -1,0 +1,59 @@
+# Lab 3: Reproducible Dependencies with `uv` Lockfiles
+
+## 1. Scenario
+The xFusionCorp Industries ML team utilizes `uv` and lockfiles to maintain consistent Python dependencies across different machines. A teammate has submitted a `requirements.in` specification that does not adhere to the team's standards. Correct the specification and compile it into a pinned lockfile.
+
+A high-level dependency specification exists at `/root/code/fraud-detection/requirements.in`, but it does not match the team's standards. `uv` is already installed.
+
+**End State Requirements:**
+- The corrected `requirements.in` lists exactly these four top-level packages: `scikit-learn`, `mlflow`, `pandas`, and `numpy`, with any version constraint being one `uv` can satisfy against PyPI (bare package names are fine — `uv` pins exact versions when it compiles the lockfile);
+- A pinned lockfile `requirements.txt` is compiled from the corrected specification, pinning each of the four top-level packages to an exact version using `==` and including the transitive dependencies that `uv` resolved.
+
+---
+
+## 2. Memorable Technique: "SMPN + Compile"
+
+* **Packages (SMPN):** **S**ome **M**odels **P**redict **N**umbers
+  * **S** = `scikit-learn`
+  * **M** = `mlflow`
+  * **P** = `pandas`
+  * **N** = `numpy`
+* **Action (`-o`):** `uv pip compile <input.in> -o <output.txt>`
+
+---
+
+## 3. Step-by-Step Solution
+
+```bash
+# 1. Navigate to the working directory
+cd /root/code/fraud-detection/
+
+# 2. Overwrite requirements.in with the exact 4 bare package names
+cat << 'EOF' > requirements.in
+scikit-learn
+mlflow
+pandas
+numpy
+EOF
+
+# 3. Compile requirements.in into a pinned requirements.txt lockfile
+uv pip compile requirements.in -o requirements.txt
+
+4. Active Recall Review
+Test yourself: Read the prompt, write down the exact command from memory, then check the answer below.
+
+Q1: Which working directory contains the broken specification file?
+
+Answer: /root/code/fraud-detection/
+
+Q2: Which four exact top-level packages must be listed in requirements.in? (Hint: SMPN)
+
+Answer: scikit-learn, mlflow, pandas, numpy
+
+Q3: Why is it safe to use bare package names (without version numbers) in requirements.in?
+
+Answer: uv pip compile automatically resolves the latest compatible versions from PyPI and pins them with == in requirements.txt.
+
+Q4: What is the exact command to generate the pinned requirements.txt from requirements.in?
+
+Answer: uv pip compile requirements.in -o requirements.txt
