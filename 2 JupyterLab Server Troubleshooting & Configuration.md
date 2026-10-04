@@ -24,7 +24,7 @@ To quickly spot and fix Jupyter configuration and startup issues, remember **"BI
 ---
 
 ## 3. Step-by-Step Solution
-
+---
 ### Step 1: Fix the Configuration File
 Open `/root/code/jupyter_lab_config.py` using your preferred editor (like `vi` or `nano`) and ensure these specific lines exist and are uncommented:
 ```python
