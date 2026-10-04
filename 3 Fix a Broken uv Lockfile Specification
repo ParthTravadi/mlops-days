@@ -18,7 +18,7 @@ A high-level dependency specification exists at `/root/code/fraud-detection/requ
   * **M** = `mlflow`
   * **P** = `pandas`
   * **N** = `numpy`
-* **Action (`-o`):** `uv pip compile <input.in> -o <output.txt>`
+* **Action (`-o`):** `uv pip compile requirements.in -o requirements.txt`
 
 ---
 
@@ -38,22 +38,40 @@ EOF
 
 # 3. Compile requirements.in into a pinned requirements.txt lockfile
 uv pip compile requirements.in -o requirements.txt
+```
 
-4. Active Recall Review
-Test yourself: Read the prompt, write down the exact command from memory, then check the answer below.
+---
 
-Q1: Which working directory contains the broken specification file?
+## 4. Active Recall Review
 
-Answer: /root/code/fraud-detection/
+*Test yourself: Read the prompt, write down the exact command from memory, then check the answer below.*
 
-Q2: Which four exact top-level packages must be listed in requirements.in? (Hint: SMPN)
+<details>
+<summary><b>Q1: Which working directory contains the broken specification file?</b></summary>
+<br>
 
-Answer: scikit-learn, mlflow, pandas, numpy
+`/root/code/fraud-detection/`
+</details>
 
-Q3: Why is it safe to use bare package names (without version numbers) in requirements.in?
+<details>
+<summary><b>Q2: Which four exact top-level packages must be listed in <code>requirements.in</code>? (Hint: SMPN)</b></summary>
+<br>
 
-Answer: uv pip compile automatically resolves the latest compatible versions from PyPI and pins them with == in requirements.txt.
+`scikit-learn`, `mlflow`, `pandas`, `numpy`
+</details>
 
-Q4: What is the exact command to generate the pinned requirements.txt from requirements.in?
+<details>
+<summary><b>Q3: Why is it safe to use bare package names (without version numbers) in <code>requirements.in</code>?</b></summary>
+<br>
 
-Answer: uv pip compile requirements.in -o requirements.txt
+`uv pip compile` automatically resolves the latest compatible versions from PyPI and pins them with `==` in `requirements.txt`.
+</details>
+
+<details>
+<summary><b>Q4: What is the exact command to generate the pinned <code>requirements.txt</code> from <code>requirements.in</code>?</b></summary>
+<br>
+
+```bash
+uv pip compile requirements.in -o requirements.txt
+```
+</details>
