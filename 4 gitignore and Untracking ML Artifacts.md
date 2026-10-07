@@ -61,7 +61,8 @@ git add .
 # 6. Commit the cleanup
 git commit -m "Add .gitignore and remove ML artifacts from tracking"
 
-4. Active Recall Review
+
+## 4. Active Recall Review
 Test yourself: Read the prompt, write down the exact command from memory, then verify against the answers below.
 
 Q1: What five categories of ML files do you need to add to the .gitignore? (Hint: CVJMS)
